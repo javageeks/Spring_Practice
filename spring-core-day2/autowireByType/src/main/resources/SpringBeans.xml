@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="invisible" class=" com.greenhorn.spring.model.Ability" >
+		<property name="skill" value="Invisible" />
+	</bean>
+	
+	<bean id = "cust" class=" com.greenhorn.spring.model.Customer">
+		<property name="name" value="Shaik"></property>
+	</bean>
+<!-- 	<bean id="person" class=" com.greenhorn.spring.model.Person">
+	<property name="ability" ref="invisible"></property>
+	</bean> -->
+	
+	
+	<bean id="person" class=" com.greenhorn.spring.model.Person" autowire="byType" />
+	
+
+	
+
+	
+	<!-- if data type of a bean is compatible with the data type of other bean property, auto wire it. -->
+	
+	
+	
+	<!-- <bean id ="customer" class = " com.greenhorn.spring.model.Customer">
+		<property name="person" ref="person"></property>
+	</bean> -->
+</beans>

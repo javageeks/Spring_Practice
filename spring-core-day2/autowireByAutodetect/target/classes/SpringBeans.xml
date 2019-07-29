@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="panda" class="com.greenhorn.spring.model.Panda" autowire="autodetect" />
+		
+	<bean id="kungfu" class="com.greenhorn.spring.model.KungFu" >
+		<property name="name" value="Shao lin" />
+	</bean>
+
+<!-- means chooses “autowire by constructor” if default constructor (argument with any data type), otherwise uses “autowire by type“. -->
+</beans>
