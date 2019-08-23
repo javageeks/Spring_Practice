@@ -12,7 +12,7 @@
 <div align="center">
 	<h2>Customer Manager</h2>
 	<form method="get" action="search">
-		<input type="text" name="keyword" /> &nbsp;
+		<input type="text" name="keyword" placeholder = "Enter name"/> &nbsp;
 		<input type="submit" value="Search" />
 	</form>
 	<h3><a href="new">New Customer</a></h3>
@@ -33,7 +33,7 @@
 			<td>
 				<a href="edit?id=${customer.id}">Edit</a>
 				&nbsp;&nbsp;&nbsp;
-				<a href="/delete?id=${customer.id}">Delete</a>
+				<a href="delete?id=${customer.id}">Delete</a>
 			</td>
 		</tr>
 		</c:forEach>

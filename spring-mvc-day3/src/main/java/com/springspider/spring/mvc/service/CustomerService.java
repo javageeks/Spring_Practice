@@ -7,19 +7,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springspider.spring.mvc.dao.CustomerDao;
-import com.springspider.spring.mvc.dao.CustomerRepository;
 import com.springspider.spring.mvc.model.Customer;
 
 @Service("customerservice")
 @Transactional
 public class CustomerService {
-	//@Autowired CustomerRepository customerDao;
 	@Autowired CustomerDao customerDao;
 	
 	
 	public void save(Customer customer) {
-		customerDao.save(customer);
-		
+		if(customer.getId() == null) { //New customer will not have id.
+			customerDao.save(customer);
+		}else {  // Customer is already exit , Edit the customer 
+			customerDao.updateCustomer(customer);
+		}
 	}
 	
 	public List<Customer> listAll() {

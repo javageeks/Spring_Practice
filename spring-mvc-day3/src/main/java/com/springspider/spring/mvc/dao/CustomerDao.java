@@ -21,9 +21,15 @@ public class CustomerDao {
 		jdbcTemplate.update("INSERT INTO customer (id, name, email, address) VALUES (?, ?, ?, ?)",
 				customer.getId(), customer.getName(), customer.getEmail(), customer.getAddress());
 		
-		System.out.println("Save Added ....");
+		System.out.println("Save  ....");
 	}
 
+	public void updateCustomer(Customer customer) {
+		jdbcTemplate.update("UPDATE customer set name= ? , email=?, address=? where id = ?",
+				customer.getName(), customer.getEmail(), customer.getAddress(), customer.getId());
+		System.out.println(" update  ....");
+	}
+	
 	public List<Customer> listAll() {
 		List <Customer> customers = jdbcTemplate.query("SELECT * FROM customer", new BeanPropertyRowMapper(Customer.class));
         return customers;
@@ -33,14 +39,13 @@ public class CustomerDao {
 		
     String sql = "SELECT * FROM customer where ID = ?";			
 	return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Customer>(Customer.class)); 
-       
-		
+       	
 	}
 
 	public void delete(Long id) {
-	String sql = "SELECT * FROM customer where ID =?";
-	jdbcTemplate.update(sql);    
-
+	String sql = "DELETE FROM customer where ID =?";	
+	jdbcTemplate.update(sql, new Object[]{id}); 
+           
 	}
 
 	public List<Customer> search(String keyword) {
